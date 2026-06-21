@@ -1,0 +1,384 @@
+/* ===================================================================
+   DESIGN SYSTEM — "The Quad Gazette" notice-board aesthetic
+   Palette: oxblood (heritage blazer) + brass (campus signage) on parchment
+   Type: serif masthead display + clean sans body + mono date-stamps
+   Signature: pinned notice cards with a brass tack + torn-edge ticker
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --color-oxblood: #6e1423;
+  --color-oxblood-dark: #531019;
+  --color-brass: #b5872f;
+  --color-brass-light: #d8b15f;
+  --color-ink: #1b2840;
+  --color-parchment: #faf6ec;
+  --color-parchment-deep: #f1e9d6;
+  --color-surface: #ffffff;
+  --color-text: #241d18;
+  --color-text-muted: #6b5f52;
+  --color-border: #e3d8c2;
+  --color-success: #2f5233;
+  --color-danger: #a3271f;
+
+  --font-display: 'Lora', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --shadow-card: 0 2px 10px rgba(27, 40, 64, 0.08), 0 1px 2px rgba(27, 40, 64, 0.06);
+  --shadow-pin: 0 4px 14px rgba(0, 0, 0, 0.16);
+
+  --bg: var(--color-parchment);
+  --surface: var(--color-surface);
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+  --border: var(--color-border);
+}
+
+[data-theme='dark'] {
+  --bg: #141a24;
+  --surface: #1d2531;
+  --text: #f1ece1;
+  --text-muted: #b3aa9b;
+  --border: #2c3645;
+  --color-parchment-deep: #20293a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--color-oxblood);
+  text-decoration: none;
+}
+[data-theme='dark'] a {
+  color: var(--color-brass-light);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-brass);
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  font-weight: 700;
+}
+[data-theme='dark'] .eyebrow {
+  color: var(--color-brass-light);
+}
+
+.section {
+  padding: 3.25rem 0;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+  font-weight: 700;
+  margin: 0.35rem 0 1.75rem;
+}
+
+/* ---------- Masthead / Navbar ---------- */
+.masthead {
+  background: var(--color-ink);
+  color: #fff;
+  border-bottom: 4px solid var(--color-brass);
+}
+.masthead .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff !important;
+}
+.masthead .nav-link {
+  color: #d9d4c8 !important;
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+.masthead .nav-link.active,
+.masthead .nav-link:hover {
+  color: var(--color-brass-light) !important;
+}
+
+/* ---------- News ticker (torn-paper strip) ---------- */
+.news-ticker {
+  background: var(--color-oxblood);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--color-oxblood-dark);
+}
+.news-ticker__track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker-scroll 32s linear infinite;
+  padding: 0.5rem 0;
+}
+.news-ticker:hover .news-ticker__track {
+  animation-play-state: paused;
+}
+.news-ticker__item {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin-right: 3rem;
+}
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-ticker__track {
+    animation: none;
+  }
+}
+
+/* ---------- Pinned card (signature element) ---------- */
+.pin-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+}
+.pin-card:hover {
+  transform: translateY(-4px) rotate(-0.3deg);
+  box-shadow: var(--shadow-pin);
+}
+.pin-card::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-brass-light), var(--color-brass) 70%);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+.pin-card__body {
+  padding: 1.25rem 1.25rem 1.1rem;
+}
+.pin-card__category {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-parchment-deep);
+  color: var(--color-oxblood);
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+[data-theme='dark'] .pin-card__category {
+  color: var(--color-brass-light);
+}
+.pin-card__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin: 0.55rem 0 0.4rem;
+  line-height: 1.35;
+}
+.pin-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+.pin-card__text {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.priority-High {
+  border-left: 4px solid var(--color-danger);
+}
+.priority-Medium {
+  border-left: 4px solid var(--color-brass);
+}
+.priority-Low {
+  border-left: 4px solid var(--color-success);
+}
+
+/* ---------- Stat card ---------- */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.stat-card__value {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-oxblood);
+}
+[data-theme='dark'] .stat-card__value {
+  color: var(--color-brass-light);
+}
+.stat-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* ---------- Buttons ---------- */
+.btn-oxblood {
+  background: var(--color-oxblood);
+  border-color: var(--color-oxblood);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-oxblood:hover {
+  background: var(--color-oxblood-dark);
+  border-color: var(--color-oxblood-dark);
+  color: #fff;
+}
+.btn-outline-brass {
+  border: 1.5px solid var(--color-brass);
+  color: var(--color-oxblood);
+  font-weight: 600;
+  background: transparent;
+}
+[data-theme='dark'] .btn-outline-brass {
+  color: var(--color-brass-light);
+}
+.btn-outline-brass:hover {
+  background: var(--color-brass);
+  color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--color-ink) 0%, #233456 100%);
+  color: #f3efe4;
+  padding: 4rem 0 3.5rem;
+  border-bottom: 6px solid var(--color-brass);
+}
+.hero__kicker {
+  font-family: var(--font-mono);
+  color: var(--color-brass-light);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+}
+.hero__title {
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin: 0.6rem 0 1rem;
+  max-width: 16ch;
+}
+.hero__sub {
+  color: #d6d0c1;
+  max-width: 56ch;
+  font-size: 1.05rem;
+}
+
+/* ---------- Skeleton loaders ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-parchment-deep) 25%, var(--border) 37%, var(--color-parchment-deep) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-pulse 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-ink);
+  color: #cfc9ba;
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 3rem;
+}
+.site-footer a {
+  color: #e9e3d3;
+}
+.site-footer h6 {
+  font-family: var(--font-display);
+  color: #fff;
+}
+
+/* ---------- Notification badge ---------- */
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: var(--color-brass);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.05rem 0.4rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-brass);
+  color: var(--color-ink);
+  padding: 0.5rem 1rem;
+  z-index: 2000;
+  font-weight: 700;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}

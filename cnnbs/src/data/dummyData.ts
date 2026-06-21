@@ -1,0 +1,165 @@
+import type { NewsItem, NoticeItem, EventItem, StatItem } from '../types';
+
+export const newsData: NewsItem[] = [
+  {
+    id: 'n1',
+    title: 'College Bags State Rank in Innovation Challenge',
+    summary: 'Final-year engineering students swept top honours at the state-level innovation summit.',
+    content:
+      'A team of final-year engineering students represented the college at the state-level innovation summit and secured the top rank for their smart-irrigation prototype. The project, mentored by the Department of Electronics, will now compete at the national round in September.',
+    category: 'Academics',
+    author: 'Dean of Academics',
+    publishedAt: '2026-06-10',
+    imageUrl: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=60',
+    featured: true,
+  },
+  {
+    id: 'n2',
+    title: 'New Central Library Wing Opens to Students',
+    summary: 'A four-storey extension adds 12,000 new titles and 24-hour reading halls.',
+    content:
+      'The newly constructed library wing was inaugurated this week, adding over 12,000 titles, digital research pods, and a 24-hour reading hall for examination season. Students can now reserve seats through the campus portal.',
+    category: 'General',
+    author: 'Library Committee',
+    publishedAt: '2026-06-08',
+    imageUrl: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=60',
+  },
+  {
+    id: 'n3',
+    title: 'Placement Drive Brings Record Offers This Season',
+    summary: 'Over 40 companies visited campus, with the highest package crossing 28 LPA.',
+    content:
+      'This year\'s placement season concluded with 40+ companies visiting campus and a record 92% placement rate among eligible final-year students. The highest package offered crossed 28 LPA from a leading product-based firm.',
+    category: 'Placement',
+    author: 'Training & Placement Cell',
+    publishedAt: '2026-06-05',
+    imageUrl: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=60',
+    featured: true,
+  },
+  {
+    id: 'n4',
+    title: 'Annual Sports Meet Concludes with Inter-Department Trophy',
+    summary: 'The Department of Mechanical Engineering retained the overall sports trophy.',
+    content:
+      'The three-day annual sports meet wrapped up with closing ceremonies at the main ground. The Department of Mechanical Engineering retained the overall trophy for the second consecutive year.',
+    category: 'Sports',
+    author: 'Sports Committee',
+    publishedAt: '2026-06-02',
+    imageUrl: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=60',
+  },
+  {
+    id: 'n5',
+    title: 'Cultural Fest "Resonance" Dates Announced',
+    summary: 'The flagship cultural festival returns with a three-day lineup in August.',
+    content:
+      'The Student Cultural Council has announced that "Resonance," the college\'s flagship cultural fest, will return for a three-day run in August featuring music, drama, and design competitions open to all departments.',
+    category: 'Cultural',
+    author: 'Student Cultural Council',
+    publishedAt: '2026-05-29',
+    imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=60',
+  },
+];
+
+export const noticeData: NoticeItem[] = [
+  {
+    id: 'no1',
+    title: 'End-Semester Examination Timetable Released',
+    description: 'The timetable for end-semester examinations (all branches) is now available on the portal. Hall tickets must be downloaded before the first exam date.',
+    category: 'Examination',
+    issuedBy: 'Controller of Examinations',
+    issuedAt: '2026-06-15',
+    priority: 'High',
+    attachmentName: 'exam-timetable-2026.pdf',
+  },
+  {
+    id: 'no2',
+    title: 'Fee Payment Deadline Extended',
+    description: 'The last date for semester fee payment without late charges has been extended to the 30th of this month.',
+    category: 'General',
+    issuedBy: 'Accounts Office',
+    issuedAt: '2026-06-14',
+    priority: 'Medium',
+  },
+  {
+    id: 'no3',
+    title: 'Pre-Placement Talk: Aspire Systems',
+    description: 'Pre-placement talk for eligible 2027-batch students is scheduled in the main auditorium. Attendance is mandatory for registered candidates.',
+    category: 'Placement',
+    issuedBy: 'Training & Placement Cell',
+    issuedAt: '2026-06-12',
+    priority: 'High',
+  },
+  {
+    id: 'no4',
+    title: 'Library Book Return Reminder',
+    description: 'Students holding books issued before April are requested to return them before the semester break to avoid fines.',
+    category: 'General',
+    issuedBy: 'Library Committee',
+    issuedAt: '2026-06-09',
+    priority: 'Low',
+  },
+  {
+    id: 'no5',
+    title: 'Revised Internal Assessment Schedule',
+    description: 'Internal assessment II for second-year students has been rescheduled. Updated dates are available in the academic calendar.',
+    category: 'Academics',
+    issuedBy: 'Academic Office',
+    issuedAt: '2026-06-07',
+    priority: 'Medium',
+    attachmentName: 'ia-revised-schedule.pdf',
+  },
+];
+
+export const eventData: EventItem[] = [
+  {
+    id: 'e1',
+    title: 'Workshop on AI & Front-End Engineering',
+    description: 'A hands-on workshop covering modern front-end architecture, component design, and applied AI tooling.',
+    venue: 'Seminar Hall 2',
+    date: '2026-06-25',
+    time: '10:00 AM',
+    organizer: 'Department of Computer Science',
+    category: 'Academics',
+    seatsAvailable: 35,
+  },
+  {
+    id: 'e2',
+    title: 'Inter-College Hackathon "CodeCrest"',
+    description: 'A 24-hour build sprint for student teams across colleges, with mentors from industry partners.',
+    venue: 'Innovation Lab',
+    date: '2026-07-03',
+    time: '9:00 AM',
+    organizer: 'Coding Club',
+    category: 'Academics',
+    seatsAvailable: 18,
+  },
+  {
+    id: 'e3',
+    title: 'Career Guidance Session for Final Years',
+    description: 'Alumni panel discussion on career pathways in product engineering, research, and entrepreneurship.',
+    venue: 'Main Auditorium',
+    date: '2026-06-29',
+    time: '2:00 PM',
+    organizer: 'Alumni Relations Cell',
+    category: 'Placement',
+    seatsAvailable: 60,
+  },
+  {
+    id: 'e4',
+    title: 'Resonance Cultural Fest – Day 1',
+    description: 'Opening day of the annual cultural fest with music auditions and the inter-department drama heat.',
+    venue: 'Open Air Theatre',
+    date: '2026-08-10',
+    time: '5:00 PM',
+    organizer: 'Student Cultural Council',
+    category: 'Cultural',
+    seatsAvailable: 200,
+  },
+];
+
+export const statsData: StatItem[] = [
+  { id: 's1', label: 'Active Notices', value: noticeData.length, icon: 'pin' },
+  { id: 's2', label: 'Upcoming Events', value: eventData.length, icon: 'calendar' },
+  { id: 's3', label: 'News Articles', value: newsData.length, icon: 'newspaper' },
+  { id: 's4', label: 'Departments', value: 8, icon: 'building' },
+];
